@@ -11,4 +11,10 @@ app.get("/admin", (req, res) => {
   res.send("This is the admin page");
 });
 
+async function start() {
+  const client = new MongoClient();
+}
+
+start();
+
 app.listen(3000);
