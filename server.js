@@ -4,7 +4,9 @@ let db;
 
 const app = express();
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const allRecipes = await db.collection("dish").find().toArray();
+  console.log(allRecipes);
   res.send("Welcome to the homepage");
 });
 
