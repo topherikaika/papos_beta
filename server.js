@@ -12,7 +12,7 @@ app.get("/admin", (req, res) => {
 });
 
 async function start() {
-  const client = new MongoClient();
+  const client = new MongoClient("mongodb://root:root@localhost:27017/papos_beta?&authSource=admin");
 }
 
 start();
