@@ -1,4 +1,4 @@
-// const { MongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 const express = require("express");
 let db;
 
@@ -7,7 +7,7 @@ const app = express();
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("dish").find().toArray();
   console.log(allRecipes);
-  res.send("Welcome to the homepage");
+  res.send(`<h1>Welcome to the page</h1>${allRecipes.map(recipe => `<p>${recipe.name} - ${recipe.type}</p>`).join("")}`);
 });
 
 app.get("/admin", (req, res) => {
