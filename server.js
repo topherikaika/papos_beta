@@ -3,6 +3,8 @@ const express = require("express");
 let db;
 
 const app = express();
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
