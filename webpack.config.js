@@ -15,3 +15,13 @@ const typicalReact = {
     }
   ]
 };
+
+const clientConfig = {
+  entry: "./src/index.js",
+  output: {
+    path: path.resolve(__dirname, "public"),
+    filename: "main.js"
+  },
+  mode: "development",
+  module: typicalReact
+};
