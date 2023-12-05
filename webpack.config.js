@@ -25,3 +25,5 @@ const clientConfig = {
   mode: "development",
   module: typicalReact
 };
+
+module.exports = [clientConfig];
