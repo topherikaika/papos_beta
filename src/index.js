@@ -3,6 +3,16 @@ import { createRoot } from "react-dom/client";
 import Axios from "axios";
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    async function go() {
+      const response = await Axios.get("/api/recipes");
+      setRecipes(response.data);
+    }
+    go();
+  }, []);
+
   return (
     <div>
       <h1>Hey!</h1>
@@ -19,7 +29,7 @@ function App() {
 function RecipeCard(props) {
   return (
     <p>
-      {props.name} is a dish from [] and is made of {props.type}
+      {props.name} is a dish from and is made of {props.type}
     </p>
   );
 }
