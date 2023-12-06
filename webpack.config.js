@@ -26,4 +26,16 @@ const clientConfig = {
   module: typicalReact
 };
 
-module.exports = [clientConfig];
+const serverConfig = {
+  entry: "./server.js",
+  output: {
+    path: __dirname,
+    filename: "server-compiled.js"
+  },
+  externals: [nodeExternals()],
+  target: "node",
+  mode: "production",
+  module: typicalReact
+};
+
+module.exports = [clientConfig, serverConfig];
