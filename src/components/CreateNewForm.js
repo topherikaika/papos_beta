@@ -21,5 +21,11 @@ function CreateNewForm(params) {
     props.setRecipes(prev => prev.concat([newPhoto.data]));
   }
 
-  return <form className="p-3 bg-success bg-opacity-25 mb-5" onSubmit={submitHandler}></form>;
+  return (
+    <form className="p-3 bg-success bg-opacity-25 mb-5" onSubmit={submitHandler}>
+      <div className="mb-2">
+        <input ref={createPhotoField} onChange={e => setFile(e.target.files[0])} type="file" className="form-control" />
+      </div>
+    </form>
+  );
 }
