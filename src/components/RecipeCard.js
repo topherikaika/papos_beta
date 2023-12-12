@@ -58,30 +58,49 @@ return (
           <p className="text-muted small">{props.type}</p>
           {!props.readOnly && (
             <>
-              <button onClick={() => {
-                setIsEditing(true)
-                setDraftName(props.name)
-                setDraftType(props.type)
-                setFile("")
-              }}
-              className="btn btn-sm btn-primary"
+              <button
+                onClick={() => {
+                  setIsEditing(true);
+                  setDraftName(props.name);
+                  setDraftType(props.type);
+                  setFile("");
+                }}
+                className="btn btn-sm btn-primary"
               >
                 Edit
-              </button>{""}
+              </button>
+              {""}
               <button
-              onClick={async () => {
-                const test = Axios.delete(`/recipe/${props.id}`)
-                props.setRecipe(prev => {
-                  return prev.filter(recipe => {
-                    return recipe._id != props.id
-                  })
-                })
-              }}
-              className="btn btn-sm btn-outline-danger"
+                onClick={async () => {
+                  const test = Axios.delete(`/recipe/${props.id}`);
+                  props.setRecipe(prev => {
+                    return prev.filter(recipe => {
+                      return recipe._id != props.id;
+                    });
+                  });
+                }}
+                className="btn btn-sm btn-outline-danger"
               >
                 Delete
               </button>
+            </>
           )}
+        </>
+      )}
+      {isEditing && (
+        <form onSubmit={submitHandler}>
+          <div className="mb-1">
+            <input autoFocus onChange={e => setDraftName(e.target.value)} type="text" className="form-control form-control-sm" value={draftName} />
+          </div>
+          <div className="mb-2">
+            <input onChange={e => setDraftType(e.target.value)} type="text" className="form-control form-control-sm" value={draftType} />
+          </div>
+          <button className="btn btn-sm btn-success">Save</button>
+          {""}
+          <button onClick={() => setIsEditing(false)} className="btn btn-sm btn-outline-secondary">
+            Cancel
+          </button>
+        </form>
       )}
     </div>
   </div>
