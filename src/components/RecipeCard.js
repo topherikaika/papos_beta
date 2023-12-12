@@ -68,6 +68,19 @@ return (
               >
                 Edit
               </button>{""}
+              <button
+              onClick={async () => {
+                const test = Axios.delete(`/recipe/${props.id}`)
+                props.setRecipe(prev => {
+                  return prev.filter(recipe => {
+                    return recipe._id != props.id
+                  })
+                })
+              }}
+              className="btn btn-sm btn-outline-danger"
+              >
+                Delete
+              </button>
           )}
       )}
     </div>
