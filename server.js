@@ -49,6 +49,11 @@ function ourCleanup(req, res, next) {
   if (typeof req.body.name != "string") req.body.name = "";
   if (typeof req.body.type != "string") req.body.type = "";
   if (typeof req.body._id != "string") req.body._id = "";
+
+  req.cleanData = {
+    name: sanitizeHTML(req.body.name.trim(), { allowedTags: [], allowedAttributes: {} }),
+    type: sanitizeHTML(req.body.type.trim(), { allowedTags: [], allowedAttributes: {} })
+  };
 }
 
 async function start() {
