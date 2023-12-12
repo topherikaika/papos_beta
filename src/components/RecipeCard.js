@@ -41,6 +41,8 @@ function AnimalCard(props) {
 
 return (
   <div className="card">
+    <div className="our-card-top">
 
+    </div>
   </div>;
 )
