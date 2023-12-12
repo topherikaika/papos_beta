@@ -45,6 +45,12 @@ app.post("/create-recipe", upload.single("photo"), async (req, res) => {
   res.send("Thank you");
 });
 
+function ourCleanup(req, res, next) {
+  if (typeof req.body.name != "string") req.body.name = "";
+  if (typeof req.body.type != "string") req.body.type = "";
+  if (typeof req.body._id != "string") req.body._id = "";
+}
+
 async function start() {
   const client = new MongoClient("mongodb://root:root@localhost:27017/AmazingMernApp?&authSource=admin");
   await client.connect();
