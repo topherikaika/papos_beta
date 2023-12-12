@@ -37,73 +37,73 @@ function RecipeCard(props) {
       });
     }
   }
-}
 
-return (
-  <div className="card">
-    <div className="our-card-top">
-      {isEditing && (
-        <div className="our-custom-input">
-          <div className="our-custom-input-interior">
-            <input onChange={e => setFile(e.target.files[0])} className="form-control form-control-sm" type="file" />
+  return (
+    <div className="card">
+      <div className="our-card-top">
+        {isEditing && (
+          <div className="our-custom-input">
+            <div className="our-custom-input-interior">
+              <input onChange={e => setFile(e.target.files[0])} className="form-control form-control-sm" type="file" />
+            </div>
           </div>
-        </div>
-      )}
-      <img src={props.photo ? `/uploaded-photos/${props.photo}` : "/fallback.png"} className="card-img-top" alt={`${props.type} named  ${props.name}`} />
-    </div>
-    <div className="card-body">
-      {!isEditing && (
-        <>
-          <h4>{props.name}</h4>
-          <p className="text-muted small">{props.type}</p>
-          {!props.readOnly && (
-            <>
-              <button
-                onClick={() => {
-                  setIsEditing(true);
-                  setDraftName(props.name);
-                  setDraftType(props.type);
-                  setFile("");
-                }}
-                className="btn btn-sm btn-primary"
-              >
-                Edit
-              </button>
-              {""}
-              <button
-                onClick={async () => {
-                  const test = Axios.delete(`/recipe/${props.id}`);
-                  props.setRecipe(prev => {
-                    return prev.filter(recipe => {
-                      return recipe._id != props.id;
+        )}
+        <img src={props.photo ? `/uploaded-photos/${props.photo}` : "/fallback.png"} className="card-img-top" alt={`${props.type} named  ${props.name}`} />
+      </div>
+      <div className="card-body">
+        {!isEditing && (
+          <>
+            <h4>{props.name}</h4>
+            <p className="text-muted small">{props.type}</p>
+            {!props.readOnly && (
+              <>
+                <button
+                  onClick={() => {
+                    setIsEditing(true);
+                    setDraftName(props.name);
+                    setDraftType(props.type);
+                    setFile("");
+                  }}
+                  className="btn btn-sm btn-primary"
+                >
+                  Edit
+                </button>
+                {""}
+                <button
+                  onClick={async () => {
+                    const test = Axios.delete(`/recipe/${props.id}`);
+                    props.setRecipe(prev => {
+                      return prev.filter(recipe => {
+                        return recipe._id != props.id;
+                      });
                     });
-                  });
-                }}
-                className="btn btn-sm btn-outline-danger"
-              >
-                Delete
-              </button>
-            </>
-          )}
-        </>
-      )}
-      {isEditing && (
-        <form onSubmit={submitHandler}>
-          <div className="mb-1">
-            <input autoFocus onChange={e => setDraftName(e.target.value)} type="text" className="form-control form-control-sm" value={draftName} />
-          </div>
-          <div className="mb-2">
-            <input onChange={e => setDraftType(e.target.value)} type="text" className="form-control form-control-sm" value={draftType} />
-          </div>
-          <button className="btn btn-sm btn-success">Save</button>
-          {""}
-          <button onClick={() => setIsEditing(false)} className="btn btn-sm btn-outline-secondary">
-            Cancel
-          </button>
-        </form>
-      )}
+                  }}
+                  className="btn btn-sm btn-outline-danger"
+                >
+                  Delete
+                </button>
+              </>
+            )}
+          </>
+        )}
+        {isEditing && (
+          <form onSubmit={submitHandler}>
+            <div className="mb-1">
+              <input autoFocus onChange={e => setDraftName(e.target.value)} type="text" className="form-control form-control-sm" value={draftName} />
+            </div>
+            <div className="mb-2">
+              <input onChange={e => setDraftType(e.target.value)} type="text" className="form-control form-control-sm" value={draftType} />
+            </div>
+            <button className="btn btn-sm btn-success">Save</button>
+            {""}
+            <button onClick={() => setIsEditing(false)} className="btn btn-sm btn-outline-secondary">
+              Cancel
+            </button>
+          </form>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default RecipeCard;
