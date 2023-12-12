@@ -26,6 +26,12 @@ function CreateNewForm(params) {
       <div className="mb-2">
         <input ref={createPhotoField} onChange={e => setFile(e.target.files[0])} type="file" className="form-control" />
       </div>
+      <div className="mb-2">
+        <input onChange={e => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="Recipe name" />
+      </div>
+      <div className="mb-2">
+        <input type="text" />
+      </div>
     </form>
   );
 }
