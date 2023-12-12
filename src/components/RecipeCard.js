@@ -38,3 +38,5 @@ function AnimalCard(props) {
     }
   }
 }
+
+return <div className="card"></div>;
