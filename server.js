@@ -9,11 +9,11 @@ app.use(express.static("public"));
 
 function passwordProtected(req, res, next) {
   res.set("WWW-Authenticate", "Basic realm='Our MERN App'");
-  if (req.headers.authorization == "hello") {
+  if (req.headers.authorization == "Basic YWRtaW46YWRtaW4=") {
     next();
   } else {
     console.log(req.headers.authorization);
-    response.status(401).send("Try again");
+    res.status(401).send("Try again");
   }
 }
 
