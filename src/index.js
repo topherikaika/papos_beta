@@ -20,10 +20,11 @@ function App() {
       <p>
         <a href="/">&laquo; Back to homepage</a>
       </p>
-      <RecipeCard />
-      {recipes.map(function (recipe) {
-        return <RecipeCard name={recipe.name} type={recipe.type} />;
-      })}
+      <div className="recipe-grid">
+        {recipes.map(function (recipe) {
+          return <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} setRecipes={setRecipes} />;
+        })}
+      </div>
     </div>
   );
 }
