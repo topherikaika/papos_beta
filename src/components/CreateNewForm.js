@@ -20,4 +20,6 @@ function CreateNewForm(params) {
     const newPhoto = await Axios.post("/create-recipe", data, { headers: { "Content-Type": "multipart/form-data" } });
     props.setRecipes(prev => prev.concat([newPhoto.data]));
   }
+
+  return <form className="p-3 bg-success bg-opacity-25 mb-5" onSubmit={submitHandler}></form>;
 }
