@@ -42,7 +42,13 @@ function AnimalCard(props) {
 return (
   <div className="card">
     <div className="our-card-top">
-
+      {isEditing && (
+        <div className="our-custom-input">
+          <div className="our-custom-input-interior">
+            <input onChange={e => setFile(e.target.files[0])} className="form-control form-control-sm" type="file" />
+          </div>
+        </div>
+      )}
     </div>
   </div>;
 )
