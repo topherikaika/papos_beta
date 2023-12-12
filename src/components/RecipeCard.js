@@ -51,6 +51,25 @@ return (
       )}
       <img src={props.photo ? `/uploaded-photos/${props.photo}` : "/fallback.png"} className="card-img-top" alt={`${props.type} named  ${props.name}`} />
     </div>
-    <div className="card-body"></div>
+    <div className="card-body">
+      {!isEditing && (
+        <>
+          <h4>{props.name}</h4>
+          <p className="text-muted small">{props.type}</p>
+          {!props.readOnly && (
+            <>
+              <button onClick={() => {
+                setIsEditing(true)
+                setDraftName(props.name)
+                setDraftType(props.type)
+                setFile("")
+              }}
+              className="btn btn-sm btn-primary"
+              >
+                Edit
+              </button>{""}
+          )}
+      )}
+    </div>
   </div>
 );
