@@ -30,7 +30,7 @@ function CreateNewForm(params) {
         <input onChange={e => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="Recipe name" />
       </div>
       <div className="mb-2">
-        <input type="text" />
+        <input onChange={e => setType(e.target.value)} value={type} type="text" className="form-control" placeholder="Type of food" />
       </div>
     </form>
   );
