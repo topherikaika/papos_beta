@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 const express = require("express");
 const multer = require("multer");
 const upload = multer();
+const sanitizeHTML = require("sanitize-html");
 let db;
 
 const app = express();
