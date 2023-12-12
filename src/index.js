@@ -16,8 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1 className="container">Recetario!</h1>
+    <div className="container">
       <p>
         <a href="/">&laquo; Back to homepage</a>
       </p>
