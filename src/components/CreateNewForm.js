@@ -36,3 +36,5 @@ function CreateNewForm(params) {
     </form>
   );
 }
+
+export default CreateNewForm;
