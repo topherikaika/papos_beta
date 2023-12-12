@@ -49,6 +49,7 @@ return (
           </div>
         </div>
       )}
+      <img src={props.photo ? `/uploaded-photos/${props.photo}` : "/fallback.png"} className="card-img-top" alt={`${props.type} named  ${props.name}`} />
     </div>
-  </div>;
-)
+  </div>
+);
