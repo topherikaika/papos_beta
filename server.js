@@ -7,11 +7,23 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
 
+function passwordProtected(req, res, next) {
+  res.set("WWW-Authenticate", "Basic realm='Our MERN App'");
+  if (req.headers.authorization == "Basic YWRtaW46YWRtaW4=") {
+    next();
+  } else {
+    console.log(req.headers.authorization);
+    res.status(401).send("Try again");
+  }
+}
+
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   console.log(allRecipes);
   res.render("home", { allRecipes });
 });
+
+app.use(passwordProtected);
 
 app.get("/admin", (req, res) => {
   res.render("admin");
