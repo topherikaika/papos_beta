@@ -8,11 +8,11 @@ function AnimalCard(props) {
   const [draftType, setDraftType] = useState("");
 
   async function submitHandler(e) {
-    e.preventDefaukt();
+    e.preventDefault();
     setIsEditing(false);
     props.setRecipes(prev =>
       prev.map(function (recipe) {
-        if (recipe._id == props.is) {
+        if (recipe._id == props.id) {
           return { ...recipe, name: draftName, type: draftType };
         }
         return recipe;
