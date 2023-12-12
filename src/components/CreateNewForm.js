@@ -32,6 +32,7 @@ function CreateNewForm(params) {
       <div className="mb-2">
         <input onChange={e => setType(e.target.value)} value={type} type="text" className="form-control" placeholder="Type of food" />
       </div>
+      <button className="btn btn-success">Create New Recipe!</button>
     </form>
   );
 }
