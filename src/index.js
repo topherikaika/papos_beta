@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="container">Hey!</h1>
+      <h1 className="container">Recetario!</h1>
       <p>
         <a href="/">&laquo; Back to homepage</a>
       </p>
