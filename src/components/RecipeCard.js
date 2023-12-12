@@ -39,4 +39,8 @@ function AnimalCard(props) {
   }
 }
 
-return <div className="card"></div>;
+return (
+  <div className="card">
+
+  </div>;
+)
