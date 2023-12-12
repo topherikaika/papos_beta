@@ -23,6 +23,8 @@ app.get("/", async (req, res) => {
   res.render("home", { allRecipes });
 });
 
+app.use(passwordProtected);
+
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
