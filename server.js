@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
 
-app.use(express.json);
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 function passwordProtected(req, res, next) {
@@ -37,6 +37,11 @@ app.get("/admin", (req, res) => {
 app.get("/api/recipes", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   res.json(allRecipes);
+});
+
+app.post("/create-recipe", upload.single("photo"), async (req, res) => {
+  console.log(req.body);
+  res.send("Thank you");
 });
 
 async function start() {
