@@ -43,6 +43,7 @@ app.get("/api/recipes", async (req, res) => {
 app.post("/create-recipe", upload.single("photo"), ourCleanup, async (req, res) => {
   console.log(req.body);
   const info = await db.collection("recipes").insertOne(req.cleanData);
+  const newRecipe = await db.collection("recipes").findOne({ _id: new ObjectId(info.insertedId) });
   res.send("Thank you");
 });
 
